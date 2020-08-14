@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">All Questions</div>
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h2> پرسش ها</h2>
+                        <div class="mr-auto">
+                        <a href="{{route('questions.create')}}" class="btn btn-lg btn-outline-primary">سوالی بپرسید</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @foreach($questions as $question)
