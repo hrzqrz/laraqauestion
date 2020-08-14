@@ -12,6 +12,9 @@
                         <a href="{{route('questions.create')}}" class="btn btn-lg btn-outline-primary">سوالی بپرسید</a>
                         </div>
                     </div>
+                    <div class="mt-5">
+                        @include('layouts.includes._messages')
+                    </div>
                 </div>
 
                 <div class="card-body">
