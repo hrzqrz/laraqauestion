@@ -7,78 +7,88 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@font-face{
+@font-face {
     font-family: shabnam;
     src: url("./fonts/shabnam.woff");
 }
 
-body{
+body {
     font-family: 'shabnam' !important;
     direction: rtl;
     text-align: right;
     font-size: 14px !important;
 }
-html{
+
+html {
     direction: rtl;
     font-family: 'shabnam' !important;
     text-align: right;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6{
+h6 {
     direction: rtl;
     text-align: right;
     font-family: 'shabnam' !important;
 }
 
-a{
+a {
     direction: rtl;
     text-align: right;
 }
 
-p{
+p {
     direction: rtl;
     text-align: right;
 }
 
-.media{
+.media {
     direction: rtl !important;
     text-align: right !important;
 }
-.counters{
+
+.counters {
     margin-left: 30px;
     font-size: 10px;
     text-align: center;
 
-    strong{
+    strong {
         display: block;
         font-size: 2em;
     }
-    .vote, .answer{
+
+    .vote,
+    .answer {
         width: 60px;
         height: 60px;
     }
 
-    .status{
-        &.unanswered{
+    .status {
+        &.unanswered {
             border: none;
         }
 
-        &.answered{
+        &.answered {
             border: 1px solid $color-green;
             color: $color-green;
         }
 
-        &.answer-accepted{
+        &.answer-accepted {
             background: $color-green;
             color: $color-white;
         }
     }
 
-    .view{
+    .view {
         margin-top: 10px;
     }
+}
+
+form,
+.form-delete {
+    display: inline;
 }

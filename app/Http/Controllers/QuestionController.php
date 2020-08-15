@@ -86,6 +86,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return redirect()->route('questions.index')->with('question_delete_success', 'آیتم با موفقیت حذف شد.');
     }
 }

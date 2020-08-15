@@ -44,7 +44,16 @@
                                 </h3>
                                 <div class="mr-auto">
                                     <a title="ویرایش" href="{{route('questions.edit', $question->id)}}"
-                                        class="btn btn-lg btn-success"> <span class="glyphicon glyphicon-edit"></span> </a>
+                                        class="btn btn-lg btn-success"> <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <form class="form-delete" action="{{route('questions.destroy', $question->id)}}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" name="del_btn" id="del_btn" class="btn btn-lg btn-danger"
+                                            onclick="return confirm('Are you sure ?')"><span
+                                                class="glyphicon glyphicon-trash"></span></button>
+                                    </form>
                                 </div>
                             </div>
                             <p class="lead">
