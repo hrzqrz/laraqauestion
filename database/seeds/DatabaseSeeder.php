@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Question;
+use App\Answer;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -19,7 +20,12 @@ class DatabaseSeeder extends Seeder
                 $u->questions()
                   ->saveMany(
                       factory(Question::class, rand(3, 7))->make()
-                  );
+                  )->each(function($q){
+                      $q->answers()
+                        ->saveMany(
+                            factory(Answer::class, rand(3, 7))->make()
+                        );
+                  });
             });
         }
     }
