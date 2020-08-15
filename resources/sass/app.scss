@@ -7,11 +7,22 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-body{
-    direction: rtl;
-    text-align: right;
+@font-face{
+    font-family: shabnam;
+    src: url("./fonts/shabnam.woff");
 }
 
+body{
+    font-family: 'shabnam' !important;
+    direction: rtl;
+    text-align: right;
+    font-size: 14px !important;
+}
+html{
+    direction: rtl;
+    font-family: 'shabnam' !important;
+    text-align: right;
+}
 h1,
 h2,
 h3,
@@ -20,6 +31,7 @@ h5,
 h6{
     direction: rtl;
     text-align: right;
+    font-family: 'shabnam' !important;
 }
 
 a{

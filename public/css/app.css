@@ -10904,8 +10904,21 @@ a.text-dark:focus {
   }
 }
 
+@font-face {
+  font-family: shabnam;
+  src: url(/fonts/shabnam.woff?846b89eed2baec92609cbec8ec8fae51);
+}
+
 body {
+  font-family: "shabnam" !important;
   direction: rtl;
+  text-align: right;
+  font-size: 14px !important;
+}
+
+html {
+  direction: rtl;
+  font-family: "shabnam" !important;
   text-align: right;
 }
 
@@ -10917,6 +10930,7 @@ h5,
 h6 {
   direction: rtl;
   text-align: right;
+  font-family: "shabnam" !important;
 }
 
 a {
