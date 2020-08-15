@@ -64,6 +64,11 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
+        if(\Gate::denies('question-update', $question))
+        {
+            abort(403, 'دسترسی غیر مجاز برای شما !!!');
+        }
+        
         return view('questions.edit')->with('question', $question);
     }
 
@@ -76,6 +81,10 @@ class QuestionController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
+        if(\Gate::denies('question-update', $question))
+        {
+            abort(403, ' دسترسی غیر مجاز برای شما !!!!');
+        }
         $question->update($request->only('title', 'body'));
         return redirect()->route('questions.index')->with('question_updated_success', 'تغییرات با موفقیت ذخیره شد.');
     }
@@ -88,6 +97,10 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
+        if(\Gate::denies('question-delete', $question))
+        {
+            abort(403, 'دسترسی غیر مجاز برای شما !!!');
+        }
         $question->delete();
         return redirect()->route('questions.index')->with('question_delete_success', 'آیتم با موفقیت حذف شد.');
     }

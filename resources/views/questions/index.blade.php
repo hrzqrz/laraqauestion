@@ -43,9 +43,12 @@
                                     <a href="{{$question->url}}">{{str_limit($question->title, 15)}}</a>
                                 </h3>
                                 <div class="mr-auto">
+                                    @if(Auth::user()->can('question-update', $question))
                                     <a title="ویرایش" href="{{route('questions.edit', $question->id)}}"
                                         class="btn btn-lg btn-success"> <span class="glyphicon glyphicon-edit"></span>
                                     </a>
+                                    @endif
+                                    @if(Auth::user()->can('question-delete', $question))
                                     <form class="form-delete" action="{{route('questions.destroy', $question->id)}}"
                                         method="POST">
                                         @csrf
@@ -54,6 +57,7 @@
                                             onclick="return confirm('Are you sure ?')"><span
                                                 class="glyphicon glyphicon-trash"></span></button>
                                     </form>
+                                    @endif
                                 </div>
                             </div>
                             <p class="lead">
