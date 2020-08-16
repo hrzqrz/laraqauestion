@@ -16,7 +16,7 @@ class Answer extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getHtmlBodyAttribute()
+    public function getBodyHtmlAttribute()
     {
         return \Parsedown::instance()->text($this->body);
     }
@@ -31,5 +31,10 @@ class Answer extends Model
         // static::saved(function($answer){ 
         //     echo "Answer saved\n";
         // });
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
