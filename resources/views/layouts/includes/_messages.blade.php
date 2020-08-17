@@ -27,3 +27,8 @@
 <strong>{{Session('answer_updated_success')}}</strong>
 </div>
 @endif
+@if(Session('answer_delete_succss'))
+<div class="alert alert-success">
+<strong>{{Session('answer_delete_succss')}}</strong>
+</div>
+@endif
