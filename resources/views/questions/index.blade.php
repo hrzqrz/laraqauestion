@@ -48,7 +48,7 @@
                                         class="btn btn-lg btn-success"> <span class="glyphicon glyphicon-edit"></span>
                                     </a>
                                     @endcan
-                                    @can('delete')
+                                    @can('delete', $question)
                                     <form class="form-delete" action="{{route('questions.destroy', $question->id)}}"
                                         method="POST">
                                         @csrf
