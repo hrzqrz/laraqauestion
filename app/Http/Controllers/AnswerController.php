@@ -6,7 +6,7 @@ use App\Answer;
 use App\Question;
 use Auth;
 use Illuminate\Http\Request;
-
+use App\Policies\AnswerPolicy;
 class AnswerController extends Controller
 {
 
