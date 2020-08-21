@@ -26,13 +26,25 @@
                     <hr>
                     <div class="media">
                         <div class="d-flex flex-column vote-controls">
-                            <a href="" title="This question is usefull" class="vote-up">
+                            <a href="" title="This question is usefull"
+                               class="vote-up {{Auth::guest() ? 'off' : ''}}"
+                                onclick="event.preventDefault();document.getElementById('up-vote-question-{{$question->id}}').submit()">
                                 <i class='fas fa-caret-up' style='font-size:24px'></i>
                             </a>
-                            <span class="votes-count">1230</span>
-                            <a href="" title="This question is not usefull" class="vote-down off">
+                        <form action="{{route('questions.voteup', $question->id)}}" id="up-vote-question-{{$question->id}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="vote" id="vote" value="1">
+                        </form>
+                            <span class="votes-count">{{$question->votes_count}}</span>
+                            <a href="" title="This question is not usefull" 
+                               class="vote-down {{Auth::guest() ? 'off' :''}}"
+                                onclick="event.preventDefault();document.getElementById('down-vote-question-{{$question->id}}').submit()">
                                 <i class='fas fa-caret-down' style='font-size:24px'></i>
                             </a>
+                        <form action="{{route('questions.voteup', $question->id)}}" id="down-vote-question-{{$question->id}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="vote" id="vote" value="-1">
+                        </form>
                         <a href="" title="Click to mark as favorite question ( Click again to undo )  "
                            class="favorite mt-2 {{Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' : '') }}"
                         onclick="event.preventDefault();document.getElementById('favorite-question-{{$question->id}}').submit();">
