@@ -25,50 +25,19 @@
                     </div>
                     <hr>
                     <div class="media">
-                        <div class="d-flex flex-column vote-controls">
-                            <a href="" title="This question is usefull"
-                               class="vote-up {{Auth::guest() ? 'off' : ''}}"
-                                onclick="event.preventDefault();document.getElementById('up-vote-question-{{$question->id}}').submit()">
-                                <i class='fas fa-caret-up' style='font-size:24px'></i>
-                            </a>
-                        <form action="{{route('questions.voteup', $question->id)}}" id="up-vote-question-{{$question->id}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="vote" id="vote" value="1">
-                        </form>
-                            <span class="votes-count">{{$question->votes_count}}</span>
-                            <a href="" title="This question is not usefull" 
-                               class="vote-down {{Auth::guest() ? 'off' :''}}"
-                                onclick="event.preventDefault();document.getElementById('down-vote-question-{{$question->id}}').submit()">
-                                <i class='fas fa-caret-down' style='font-size:24px'></i>
-                            </a>
-                        <form action="{{route('questions.voteup', $question->id)}}" id="down-vote-question-{{$question->id}}" method="POST">
-                            @csrf
-                            <input type="hidden" name="vote" id="vote" value="-1">
-                        </form>
-                        <a href="" title="Click to mark as favorite question ( Click again to undo )  "
-                           class="favorite mt-2 {{Auth::guest() ? 'off' : ($question->is_favorited ? 'favorited' : '') }}"
-                        onclick="event.preventDefault();document.getElementById('favorite-question-{{$question->id}}').submit();">
-                                ​<i class='fas fa-certificate' style='font-size:20px'></i>
-                                <span class="favorties-count">{{$question->favorites_count}}</span>
-                            </a>
-                        <form action="{{route('questions.favorite', $question->id)}}" method="POST" id="favorite-question-{{$question->id}}">
-                            @csrf
-                            @if($question->is_favorited)
-                                @method('DELETE')
-                            @endif
-                        </form>
-                        </div>
+                        @include('shared._vote', [
+                            'model' => $question
+                        ])
                         <div class="media-body">
                             {!! $question->body_html !!}
-                            <div class="float-left">
-                                <span class="text-muted">تاریخ: {{$question->created_date}}</span>
-                                <div class="media">
-                                    <a href="{{$question->user->url}}" class="pl-2">
-                                        <img src="{{$question->user->avatar}}" alt="">
-                                    </a>
-                                    <div class="media-body">
-                                        <a href="{{$question->user->url}}">{{$question->user->name}}</a>
-                                    </div>
+                            <div class="row">
+                                <div class="col-4"></div>
+                                <div class="col-4"></div>
+                                <div class="col-4">
+                                    @include('shared._author', [
+                                        'model' => $question,
+                                        'lable' => 'تاریخ سوال'
+                                    ])
                                 </div>
                             </div>
                         </div>
