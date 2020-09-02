@@ -55,8 +55,13 @@ class Question extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return \Parsedown::instance()->text($this->body);
+        return clean($this->bodyHtml());
     }
+
+    // public function setBodyAttribute($value)
+    // {
+    //      $this->attributes['body'] = clean($value);
+    // }
 
     public function acceptBestAnswer(Answer $answer)
     {
@@ -79,4 +84,18 @@ class Question extends Model
         return $this->favorites->count();
     }
 
+    public function getExcerpAttribute()
+    {
+        return $this->excerp(300);
+    }
+
+    public function excerp($length)
+    {
+        return str_limit(strip_tags($this->bodyHtml()), $length);
+    }
+
+    private function bodyHtml()
+    {
+        return \Parsedown::instance()->text($this->body);
+    }
 }
