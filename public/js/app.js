@@ -1928,6 +1928,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: "UserInfo",
   props: ['model', 'label'],
   computed: {
     postDate: function postDate() {
@@ -1935,7 +1936,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   data: function data() {
-    return this.model.user;
+    return {
+      user: this.model.user
+    };
   }
 });
 

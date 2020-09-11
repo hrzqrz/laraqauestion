@@ -18,17 +18,18 @@
 </template>
 
 <script>
-export default {
-    props:['model', 'label'],
-
-    computed:{
-        postDate () {
-            return this.label + " " + this.model.created_date;
+    export default {
+        name: "UserInfo",
+        props: ['model', 'label'],
+        computed: {
+            postDate() {
+                return this.label + " " + this.model.created_date;
+            }
+        },
+        data() {
+            return {
+                user: this.model.user
+            }
         }
-    },
-
-    data () {
-        return  this.model.user;
     }
-}
 </script>
