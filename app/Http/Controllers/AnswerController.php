@@ -52,6 +52,14 @@ class AnswerController extends Controller
         $answer->update($request->validate([
             'body'=>'required'
         ]));
+
+        if($request->expectsJson())
+        {
+            return response()->json([
+                'message' => 'اطلاعات با موفقیت بروزرسانی شد.',
+                'body_html'  => $answer->body_html
+            ]);
+        }
         return redirect()->route('questions.show', $question->slug)->with('answer_updated_success', 'اطلاعات با موفقیت به روزرسانی شد.');
     }
 

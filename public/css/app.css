@@ -11036,3 +11036,7 @@ form,
   border-bottom: 1px solid black;
 }
 
+.vote-controls [v-cloak] {
+  display: none;
+}
+
