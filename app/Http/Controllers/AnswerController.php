@@ -73,6 +73,12 @@ class AnswerController extends Controller
     {
         $this->authorize('delete', $answer);
         $answer->delete();
+        if($request->expectsJason())
+        {
+            return response()->json([
+                'message' => 'این پاسخ با موفقیت حذف شد'
+            ]);
+        }
         return redirect()->back()->with('answer_delete_succss', 'این پاسخ با موفقیت حذف شد.');
     }
 }

@@ -27,15 +27,16 @@
                     </a>
                     @endcan
                     @can('delete', $answer)
-                    <form class="form-delete"
+                    <button @click="destroy" name="del_btn" id="del_btn" class="btn btn-lg btn-danger">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    {{-- <form class="form-delete"
                         action="{{route('questions.answers.destroy', [$question->id, $answer->id])}}"
                         method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" name="del_btn" id="del_btn" class="btn btn-lg btn-danger"
-                            onclick="return confirm('Are you sure ?')"><span
-                                class="glyphicon glyphicon-trash"></span></button>
-                    </form>
+                        
+                    </form> --}}
                     @endcan
                 </div>
             </div>
