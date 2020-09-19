@@ -33,11 +33,10 @@ export default {
                 //console.log('res');
                 this.editing = false;
                 this.bodyHtml = res.data.body_html;
-                alert(res.data.message);
+                this.$toast.success(res.data.message, 'Success', {timeoute: 3000});
             })
             .catch(err => {
-                console.log(err.response)
-                console.log('Something went wrong.');
+                this.$toast.error(err.response.data.message, 'Error', {timeoute: 3000});
             });
         },
 
@@ -46,7 +45,7 @@ export default {
                 axios.delete(this.endpiont)
                 .then(res => {
                     $(this.$el).fadeOut(500, ()=>{
-                        alert(res.data.message)
+                        this.$toast.success(res.data.message, 'success', {timeoute: 3000});
                     })
                 })
             }
